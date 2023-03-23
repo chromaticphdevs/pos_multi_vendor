@@ -15,23 +15,21 @@
 
 			$this->data['page_title'] = ' Users ';
 			$this->data['user_form'] = new UserForm();
-			$this->data['behaviorService'] = new BehaviorService();
 		}
 
 		public function index()
 		{
 			$params = request()->inputs();
 
-			if(!empty($params))
-			{
-				$this->data['users'] = $this->model->getAll([
-					'where' => $params
-				]);
-			}else{
+			if(isVendor()) {
 				$this->data['users'] = $this->model->getAll( );
+			}else{
+				$this->data['users'] = $this->model->getAll([
+					'where' => [
+						'company_id' => $this->data['whoIs']->company_id
+					]
+				]);
 			}
-			
-
 			return $this->view('user/index' , $this->data);
 		}
 
@@ -56,7 +54,16 @@
 
 				return redirect( _route('user:show' , $user_id , ['user_id' => $user_id]) );
 			}
-			$this->data['user_form'] = new UserForm('userForm');
+			$user_form = new UserForm('userForm');
+
+			if(!isVendor()) {
+				$user_form->add([
+					'type' => 'hidden',
+					'name' =>'company_id',
+					'value' => $this->data['whoIs']->company_id
+				]);
+			}
+			$this->data['user_form'] = $user_form;
 
 			return $this->view('user/create' , $this->data);
 		}
@@ -107,9 +114,6 @@
 
 		public function show($id)
 		{
-			$behaviorService = $this->data['behaviorService'];
-			$favGenre = $behaviorService->getFavoriteGenre();
-
 			$user = $this->model->get($id);
 
 			if(!$user) {
@@ -118,9 +122,6 @@
 			}
 
 			$this->data['user'] = $user;
-			$this->data['userDetail'] = [
-				'favGenre' => $favGenre
-			];
 			
 			return $this->view('user/show' , $this->data);
 		}

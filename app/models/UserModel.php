@@ -22,7 +22,8 @@
 			'user_type',
 			'user_identification',
 			'profile',
-			'is_verified'
+			'is_verified',
+			'company_id'
 		];
 
 
@@ -35,7 +36,7 @@
 			} else {
 				return $this->getAll([
 					'where' => [
-						'id' => $id
+						'user.id' => $id
 					]
 				])[0] ?? false;
 			}
@@ -221,17 +222,13 @@
 
 		public function getAll($params = [])
 		{
-			$where = null;
-			$order = " ORDER BY firstname asc ";
-
-			if(isset($params['order']))
-				$order = " ORDER BY {$params['order']}";
-			if(isset($params['where']))
-				$where = " WHERE ".$this->conditionConvert($params['where']);
+			extract(parent::queryParameterExtractor($params));
 
 			$this->db->query(
-				"SELECT * FROM {$this->table}
-					{$where} {$order}"
+				"SELECT user.*,company_name FROM {$this->table} as user
+						LEFT JOIN companies as company
+						ON company.id = user.company_id
+					{$where} {$order} {$limit}"
 			);
 
 			return $this->db->resultSet();
@@ -269,14 +266,14 @@
 		}
 
 
-		public function authenticate($email , $password)
+		public function authenticate($username , $password)
 		{
 			$errors = [];
 
-			$user = parent::single(['email' => $email]);
+			$user = parent::single(['username' => $username]);
 
 			if(!$user) {
-				$errors[] = " Email '{$email}' does not exists in any account";
+				$errors[] = " Username '{$username}' does not exists in any account";
 			}
 
 			if(!isEqual($user->password ?? '' , $password)){
@@ -296,7 +293,7 @@
 		*/
 		public function startAuth($id)
 		{
-			$user = parent::get($id);
+			$user = $this->get($id);
 
 			if(!$user){
 				$this->addError("Auth cannot be started!");

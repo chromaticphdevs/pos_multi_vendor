@@ -177,6 +177,15 @@
 		'delete' => $controller.'/destroy',
 	];
 
+	$controller = '/BranchProductController';
+	$routes['branch-product'] = [
+		'index' => $controller.'/index',
+		'show' => $controller.'/show',
+		'edit' => $controller.'/edit',
+		'create' => $controller.'/create',
+		'add'    => $controller .'/addItem',
+		'delete' => $controller.'/destroy',
+	];
 
 
 	return $routes;

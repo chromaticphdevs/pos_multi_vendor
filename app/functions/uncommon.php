@@ -1,5 +1,7 @@
 <?php
-    
+    use Services\UserService;
+    load(['UserService'], SERVICES);
+
     function __($data)
     {
         if( is_array($data) )
@@ -59,20 +61,16 @@
     }
 
 
-    function isStudent() {
-        return isEqual(whoIs('user_type'), 'student');
+    function isVendor() {
+        return isEqual(whoIs('user_type'), UserService::VENDOR);
     }
 
     function isAdmin() {
-        return isEqual(whoIs('user_type'), 'ADMINISTRATOR');
+        return isEqual(whoIs('user_type'), UserService::ADMIN);
     }
 
-    function isTeacher() {
-        return isEqual(whoIs('user_type'), 'teacher');
-    }
-
-    function isParent() {
-        return isEqual(whoIs('user_type'), 'parent');
+    function isStaff() {
+        return isEqual(whoIs('user_type'), UserService::STAFF);
     }
 
     function whoIs($prop = null)

@@ -166,6 +166,7 @@
                         <div class="text-center">
                             <p class="tx-16 fw-bolder"><?php echo whoIs('firstname')?></p>
                             <p class="tx-12 text-muted">#<?php echo whoIs('user_identification')?>@<?php echo whoIs('user_type')?></p>
+                            <p class="tx-12 text-muted"><?php echo whoIs('company_name')?></p>
                         </div>
                     </div>
                         <ul class="list-unstyled p-1">

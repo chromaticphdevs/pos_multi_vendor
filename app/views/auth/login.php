@@ -6,8 +6,8 @@
                     <div style="flex:1; padding:20px" id="logoForBigScreen">
                         <div class="text-center">
                             <div class="mb-5"><?php echo wLogo('main', ['height' => 150 , 'width' => 150])?></div>
-                            <h4>Technological University of the Philippines - Manila</h4>
-                            <p>Ayala Boulevard, Ermita Manila www.tup.edu.ph</p>
+                            <h4>POS</h4>
+                            <p>Breakthrough-e POS ERP</p>
                         </div>
                     </div>
 
@@ -15,8 +15,8 @@
                         <?php Form::open(['method' => 'post'])?>
                             <?php Flash::show()?>
                             <?php echo wDivider(80)?>
-                                <h4>Welcome To TUP Archive!</h4>
-                                <div class="form-group"><?php echo $form->getCol('email');?></div>
+                                <h4>Welcome To Breakthrough-e POS</h4>
+                                <div class="form-group"><?php echo $form->getCol('username');?></div>
                                 <div class="form-group"><?php echo $form->getCol('password');?></div>
                                 <div class="form-group mt-3">
                                     <?php echo Form::submit('', 'Login')?>

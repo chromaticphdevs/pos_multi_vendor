@@ -3,6 +3,7 @@
 		<div class="card">
 			<div class="card-header">
 				<h4 class="card-title">Add New Company</h4>
+				<?php echo wLinkDefault(_route('company:index'), 'List of Companies')?>
 			</div>
 
 			<div class="card-body">

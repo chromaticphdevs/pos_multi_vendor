@@ -9,7 +9,7 @@ CREATE TABLE `users` (
   `lastname` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `gender` enum('MALE','FEMALE') NOT NULL,
-  `user_type` enum('supervisor','staff','admin') DEFAULT 'staff',
+  `user_type` varchar(20),
   `is_verified` tinyint(1) DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `profile` text DEFAULT NULL,

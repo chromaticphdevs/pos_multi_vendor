@@ -17,7 +17,7 @@
 			$this->name = $name ?? 'form_user';
 
 			$this->initCreate();
-			
+			$this->addCompany();
 			$this->addUserType();
 
 			/*personal details*/
@@ -25,15 +25,12 @@
 			$this->addLastName();
 			$this->addEmail();
 			$this->addPassword();
-			$this->addGender();
 
-			// $this->addUsername();
+			$this->addUsername();
 			$this->addProfile();
 			/*end*/
-			$this->addPhoneNumber();
-			$this->addAddress();
 
-			
+
 			$this->addSubmit('');
 		}
 
@@ -249,6 +246,24 @@
 				],
 
 				'value' => 'Save user'
+			]);
+		}
+
+		public function addCompany()
+		{
+			if(!isset($this->companyModel)) {
+				$this->companyModel = model('CompanyModel');
+			}
+			$companies = $this->companyModel->getAll();
+			$companies_array = arr_layout_keypair($companies, ['id', 'company_name']);
+			$this->add([
+				'type' => 'select',
+				'name' => 'company_id',
+				'class' => 'form-control',
+				'options' => [
+					'label' => 'Company',
+					'option_values' => $companies_array
+				]
 			]);
 		}
 	}

@@ -255,6 +255,7 @@
 	final protected function saveId($id)
 	{
 		$this->database['id'] = $id;
+		$this->retVal['id'] = $id;
 		return $id;
 	}
 
@@ -460,4 +461,31 @@
 	}
 
 
+	final protected function queryParameterExtractor($params = []) {
+		$where = null;
+		$order = null;
+		$limit = null;
+
+		if(!empty($params['where'])) {
+			$where = " WHERE ".$this->conditionConvert($params['where']);
+		}
+
+		if(!empty($params['order'])) {
+			$order = " ORDER BY {$params['order']}";
+		}
+
+		if(!empty($params['limit'])) {
+			$limit = " LIMIT {$params['limit']}";
+		}
+
+		return [
+			'where' => $where,
+			'order' => $order,
+			'limit' => $limit,
+		];
+	}
+
+	final public function retVal($key = null) {
+		return $this->retVal[$key] ?? '';
+	}
  }

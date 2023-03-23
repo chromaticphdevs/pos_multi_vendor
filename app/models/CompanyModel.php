@@ -17,4 +17,13 @@
 				return parent::update($data, $id);
 			}
 		}
+
+		public function getAll($params = []) {
+			extract(parent::queryParameterExtractor($params));
+			$this->db->query(
+				"SELECT * FROM {$this->table}
+					{$where}{$order}{$limit}"
+			);
+			return $this->db->resultSet();
+		}
 	}
