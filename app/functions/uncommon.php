@@ -17,7 +17,6 @@
     function getRecentGameResetDate()
     {
         $db = Database::getInstance();
-
         $db->query(
             "SELECT * FROM fetch_game_logs
                 ORDER BY id DESC"
