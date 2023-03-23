@@ -1,7 +1,4 @@
 <?php
-load(['UserService'], SERVICES);
-use Services\UserService;
-
 function __($data)
 {
     if( is_array($data) )
@@ -61,15 +58,15 @@ function authSet($data)
 
 
 function isVendor() {
-    return isEqual(whoIs('user_type'), UserService::VENDOR);
+    return isEqual(whoIs('user_type'), 'VENDOR');
 }
 
 function isAdmin() {
-    return isEqual(whoIs('user_type'), UserService::ADMIN);
+    return isEqual(whoIs('user_type'), 'ADMINISTRATOR');
 }
 
 function isStaff() {
-    return isEqual(whoIs('user_type'), UserService::STAFF);
+    return isEqual(whoIs('user_type'),'STAFF');
 }
 
 function whoIs($prop = null)

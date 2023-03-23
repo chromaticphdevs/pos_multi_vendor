@@ -9,7 +9,6 @@
 	{	
 
 		protected $_attachmentForm = null;
-
 		//temporary
 		public $is_admin = false;
 
