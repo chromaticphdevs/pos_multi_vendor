@@ -74,7 +74,7 @@
     }
 
     function whoIs($prop = null)
-	{
+    {
         $user = Session::get('auth');
 
         if(!is_null($prop)){
@@ -102,7 +102,7 @@
         } 
 
         return $user ?? '';
-	}
+    }
 
 
     function accountIsSetup()
@@ -225,15 +225,15 @@
 
 
     function amountHTML($amount)
-	{
-		$amountHTML = number_format($amount , 2);
+    {
+        $amountHTML = number_format($amount , 2);
 
-		if($amount < 0) {
+        if($amount < 0) {
             $amountHTML = number_format(abs($amount), 2);
-			return "<span>( {$amountHTML} )</span>";
-		}else{
-			return "<span> {$amountHTML}</span>";
-		}
+            return "<span>( {$amountHTML} )</span>";
+        }else{
+            return "<span> {$amountHTML}</span>";
+        }
     }
 
     function order_status_html($status)
@@ -355,22 +355,22 @@
     }
 
     function getRowObject($arrayObject , $property)
-	{
-		$arrayOfObjects = array();
+    {
+        $arrayOfObjects = array();
 
-		foreach($arrayObject as $key => $object)
-		{
-			$objectInstance = new stdClass();
-			foreach($property as $prop)
-			{
-				$objectInstance->$prop = $object->$prop;
-			}
+        foreach($arrayObject as $key => $object)
+        {
+            $objectInstance = new stdClass();
+            foreach($property as $prop)
+            {
+                $objectInstance->$prop = $object->$prop;
+            }
 
-			array_push($arrayOfObjects, $objectInstance);
-		}
+            array_push($arrayOfObjects, $objectInstance);
+        }
 
-		return $arrayOfObjects;
-	}
+        return $arrayOfObjects;
+    }
 
     function G_PickDataFromArray($datas , $collectTheseKeysOnly = [] , $returnType = 'object')
     {
