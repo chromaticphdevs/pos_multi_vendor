@@ -36,7 +36,7 @@
      * SYSTEM MODES
      * UP(UP AND RUNNING) , DOWN(MAINTENANCE) , DEV(DEVELOPMENT TEST DABATASE) , LOCAL (LOCAL MODE)
      */
-    $system['mode']  = 'local';
+    $system['mode']  = 'up';
 
     /**
      * SYSTEM SITE NAME
@@ -54,7 +54,7 @@
     $system['version']  = 'N/A';
 
 
-    $system['app_name'] = 'COVID-PIMS';
+    $system['app_name'] = 'POS MULTI VENDOR';
 
     $ui = [
         'vendor' => 'cork'

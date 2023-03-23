@@ -29,7 +29,7 @@
 
     define('GLOBALS' , APPROOT.DS.'classes/globals');
 
-    define('SITE_NAME' , 'invborrower.cloud');
+    define('SITE_NAME' , 'pos.vendor.breakthrough-e.com');
 
     define('COMPANY_NAME' , 'BK_POS');
     define('APP_NAME' , 'BK_POS');
