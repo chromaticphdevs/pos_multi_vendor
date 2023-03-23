@@ -1,6 +1,6 @@
 <?php
-    use Services\UserService;
     load(['UserService'], SERVICES);
+    use Services\UserService;
 
     function __($data)
     {
