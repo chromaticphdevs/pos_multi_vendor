@@ -1,4 +1,4 @@
 app/config/path.php
 app/config/setup_loader.php
 app/config/setup.php
-public/
+#public/
